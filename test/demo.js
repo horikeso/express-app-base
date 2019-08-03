@@ -66,13 +66,13 @@ describe('demo.js', () => {
         spy.restore();// spyクリア
     });
 
-    it('throwSyntaxError SyntaxErrorのテスト', () => {
-        const spy = sinon.spy(model, 'throwSyntaxError');// spyを登録
+    it('httpStatusesComApiのテスト', async () => {
+        const spy = sinon.spy(model, 'httpStatusesComApi');// spyを登録
 
-        assert.throws(model.throwSyntaxError, SyntaxError);
+        const result = await model.httpStatusesComApi();
 
+        assert.deepEqual(result, [{ status: 200, statusText: 'OK' }]);
         assert.strictEqual(spy.calledOnce, true);// 呼ばれた回数
-
         spy.restore();// spyクリア
     });
 

@@ -1,13 +1,40 @@
 {
   "appenders": {
-    "console": { "type": "console" },
-    "errorFile": { "type": "dateFile", "filename": "log/error.log", "pattern": ".yyyy-MM-dd", "compress": true },
-    "infoFile": { "type": "dateFile", "filename": "log/info.log", "pattern": ".yyyy-MM-dd", "compress": true }
+    "console": {
+      "type": "console"
+    },
+    "errorFile": {
+      "type": "dateFile",
+      "filename": "log/error.log",
+      "pattern": ".yyyy-MM-dd",
+      "maxLogSize": 10485760,
+      "backups": 30,
+      "compress": true,
+      "keepFileExt": true
+    },
+    "infoFile": {
+      "type": "dateFile",
+      "filename": "log/info.log",
+      "pattern": ".yyyy-MM-dd",
+      "maxLogSize": 10485760,
+      "backups": 7,
+      "compress": true,
+      "keepFileExt": true
+    }
   },
   "categories": {
-    "error": { "appenders": [ "errorFile" ], "level": "warn" },
-    "info": { "appenders": [ "infoFile" ], "level": "all" },
-    "default": { "appenders": ["console"], "level": "info" }
+    "error": {
+      "appenders": [ "errorFile" ],
+      "level": "warn"
+    },
+    "info": {
+      "appenders": [ "infoFile" ],
+      "level": "all"
+    },
+    "default": {
+      "appenders": ["console"],
+      "level": "info"
+    }
   },
   "pm2": true,
   "pm2InstanceVar": "INSTANCE_ID"
